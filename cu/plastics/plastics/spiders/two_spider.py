@@ -1,13 +1,13 @@
 import scrapy
-from plastics import items
+from plastics import items2
 
 class ApprovedPlastics(scrapy.Spider):
-    name = "plastics"
+    name = "ps"
     
     def start_requests(self):
         
         urls = [
-            "https://www.acplasticsinc.com/informationcenter/r/fda-approved-plastics-for-food-contact"
+            "https://www.professionalplastics.com/FDAApprovedPlasticMaterials?gclid=Cj0KCQiAs67yBRC7ARIsAF49CdWGrswhrwhbMTlcMJPVyHCm2DA2yAvxmrQtrIqV75JV_W0OmKTnd7UaAssIEALw_wcB"
             ]
         
         for url in urls:
@@ -17,7 +17,7 @@ class ApprovedPlastics(scrapy.Spider):
             
     def parse(self,response):
 
-        filename = 'ApprovedPlastics.txt'
+        filename = 'ApprovedPs'
         with open(filename,'wb') as f:
             f.write(response.body)
         self.log('Saved file %s' % filename)
@@ -30,8 +30,7 @@ class ApprovedPlastics(scrapy.Spider):
         item['spider']=self.name
 
         return item
-
-
+         
         
 
  
